@@ -102,46 +102,89 @@ public class Piston implements GLEventListener {
                 0, 1, 0 // koordinat arah atas kamera
         );
         
-        gl.glRotatef(angle++, 1.0f, 0.0f, 0.0f);
-        // Drawing Using Triangles
+        gl.glRotatef(angle, 1.0f, 0.0f, 0.0f);
+        gl.glRotatef(view_rotx, 1.0f, 0.0f, 0.0f);
+        gl.glRotatef(view_roty, 0.0f, 1.0f, 0.0f);
+        
+        gl.glPushMatrix();
 
-        gl.glTranslatef(0.0f, 3.0f, 0.0f);
+        gl.glTranslatef(0.0f, strokea, 0.0f);
         Part.pistonHead(gl);
-//        Part.pistonStem(gl);
         gl.glTranslatef(0.0f, -8.0f, 0.0f);
         Part.pistonStem(gl);
-        Part.sirip(gl);
-        gl.glPushMatrix();
-        gl.glTranslatef(1f, 3f, 0.0f);
-        Part.sirip_banyak(gl);
         gl.glPopMatrix();
-        gl.glTranslatef(0.0f, 0.0f, 0.0f);
-        Part.balok(gl);
-        gl.glPushMatrix();
-        gl.glTranslatef(0.0f, 0.0f, 0.0f);
-        Part.balok_tambahan_atas(gl);
+        
+        
+        gl.glTranslatef(2.2f, 0.0f, 0.0f);
+        Part.kotak(gl);
         gl.glPopMatrix();
-        gl.glTranslatef(0.0f, 0.0f, 0.0f);
-        Part.body_bandul(gl);
-        gl.glPushMatrix();
-        gl.glTranslatef(0.0f, 0.0f, 0.0f);
-        Part.sambungan_bandul(gl);
+        
+        gl.glTranslatef(-5.4f, 0.0f, 0.0f);
+        Part.kotak(gl);
         gl.glPopMatrix();
-        gl.glTranslatef(0.0f, 0.0f, 0.0f);
-        Part.sisi_samping_sambungan_bandul(gl);
-        gl.glPushMatrix();
-        gl.glTranslatef(0.0f, 0.0f, 0.0f);
-        Part.bandul(gl);
-        gl.glPopMatrix();
-        gl.glTranslatef(0.0f, 0.0f, 0.0f);
-        Part.ring(gl);
-        gl.glPushMatrix();
-        gl.glTranslatef(0.0f, 0.0f, 0.0f);
-        Part.bandul(gl);
-        gl.glPopMatrix();
+        
+        // Drawing Using Triangles
         gl.glFlush();
     }
 
+    static boolean b = false;
+    static boolean i = false;
+    
     public void displayChanged(GLAutoDrawable drawable, boolean modeChanged, boolean deviceChanged) {
+        //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public void mouseClicked(MouseEvent e) {
+        //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public void mousePressed(MouseEvent e) {
+        oldMouseX = e.getX();
+        oldMouseY = e.getY();
+    }
+
+    public void mouseReleased(MouseEvent e) {
+        //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public void mouseEntered(MouseEvent e) {
+        //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public void mouseExited(MouseEvent e) {
+        //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public void mouseDragged(MouseEvent e) {
+        int x = e.getX();
+        int y = e.getY();
+        Dimension size = e.getComponent().getSize();
+        float thetaY = 360.0f * ((float) (x - oldMouseX) / (float) size.width);
+        float thetaX = 360.0f * ((float) (oldMouseY - y) / (float) size.height);
+        oldMouseX = x;
+        oldMouseY = y;
+        view_rotx += thetaX;
+        view_roty += thetaY;
+    }
+
+    public void mouseMoved(MouseEvent e) {
+        //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public void keyTyped(KeyEvent e) {
+        //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public void keyPressed(KeyEvent e) {
+        System.out.println(e.getKeyCode());
+        if (e.getKeyCode() == 32) {
+            sta = true;
+        } else if (e.getKeyCode() == 39) {
+            i = true;
+        }
+    }
+
+    public void keyReleased(KeyEvent e) {
+        //To change body of generated methods, choose Tools | Templates.
     }
 }
