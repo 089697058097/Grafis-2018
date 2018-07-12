@@ -84,8 +84,23 @@ public class Piston implements GLEventListener {
         gl.glLoadIdentity();
     }
     float angle = 0;
+    
+    static float strokea = 6.5f;//batas atas 
+    static float strokeb = 4f;//batas bawah
+    static float strokec = 4f;
+    static boolean sta = false;
+    static boolean stb = false;
 
     public void display(GLAutoDrawable drawable) {
+        if (sta) {
+            strokea -= 0.05f;
+            if (strokea < strokeb) {
+                strokea = strokec;
+                if (strokea == strokec) {
+                    strokea = 6.5f;
+                }
+            }
+            
         GL gl = drawable.getGL();
 
         // Clear the drawing area
@@ -131,7 +146,14 @@ public class Piston implements GLEventListener {
     static boolean i = false;
     
     public void displayChanged(GLAutoDrawable drawable, boolean modeChanged, boolean deviceChanged) {
-        //To change body of generated methods, choose Tools | Templates.
+       if (sta) {
+            strokea -= 0.05f;
+            if (strokea < strokeb) {
+                strokea = strokec;
+                if (strokea == strokec) {
+                    strokea = 6.5f;
+                }
+            }
     }
 
     public void mouseClicked(MouseEvent e) {
