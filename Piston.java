@@ -84,13 +84,13 @@ public class Piston implements GLEventListener {
         gl.glLoadIdentity();
     }
     float angle = 0;
-    
+    float angle1 = -1;
     static float strokea = 6.5f;//batas atas 
     static float strokeb = 4f;//batas bawah
     static float strokec = 4f;
     static boolean sta = false;
     static boolean stb = false;
-
+static float strokex = 90f;
     public void display(GLAutoDrawable drawable) {
         if (sta) {
             strokea -= 0.05f;
@@ -100,6 +100,17 @@ public class Piston implements GLEventListener {
                     strokea = 6.5f;
                 }
             }
+        }
+        if (sta) {
+            strokex += 5f;
+            if (strokex < strokeb) {
+                strokex = strokec;
+                if (strokex == strokec) {
+                    strokex = 0f;
+                }
+            }
+        }
+
             
         GL gl = drawable.getGL();
 
@@ -136,6 +147,17 @@ public class Piston implements GLEventListener {
         
         gl.glTranslatef(-5.4f, 0.0f, 0.0f);
         Part.kotak(gl);
+        gl.glPopMatrix();
+            
+        gl.glRotatef(angle1, 1.0f, 0.0f, 0.0f);//tugasnya
+        gl.glRotatef(view_rotx, 1.0f, 0.0f, 0.0f);
+        gl.glRotatef(view_roty, 0.0f, 1.0f, 0.0f);
+
+        
+        
+        gl.glTranslatef(3f, 9, 0.0f);
+        gl.glRotatef(strokex, 0.0f, 0.0f, 1.0f);
+        Part.kotak7(gl);
         gl.glPopMatrix();
         
         // Drawing Using Triangles
