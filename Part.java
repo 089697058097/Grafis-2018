@@ -506,5 +506,40 @@ public class Part {
         glu.gluDisk(q, 0.0f, BODY_RADIUS, SLICES, STACKS);       
 
     }
+    static void kotak7 (GL gl){ // Tugas
+        gl.glPushMatrix();
+        gl.glColor3f(0.85f, 0.85f, 0.85f);
+        gl.glBegin(GL.GL_QUADS);
+        gl.glVertex3f(-0.5f,-1.5f,1);
+        gl.glVertex3f(0.5f,-1.5f,1);
+        gl.glVertex3f(0.5f,1.5f,1);
+        gl.glVertex3f(-0.5f,1.5f,1);
+        gl.glEnd();
+        
+        gl.glBegin(GL.GL_QUADS);
+        gl.glVertex3f(-0.5f,-1.5f,-1);
+        gl.glVertex3f(0.5f,-1.5f,-1);
+        gl.glVertex3f(0.5f,1.5f,-1);
+        gl.glVertex3f(-0.5f,1.5f,-1);
+        gl.glEnd();
+        
+        
+        gl.glBegin(GL.GL_QUADS);
+        gl.glVertex3f(0.5f,-1.5f,-1);
+        gl.glVertex3f(0.5f,-1.5f,1);
+        gl.glVertex3f(0.5f,1.5f,1);
+        gl.glVertex3f(0.5f,1.5f,-1);
+        gl.glEnd();
+        
+        gl.glBegin(GL.GL_QUADS);
+        gl.glVertex3f(-0.5f,-1.5f,-1);
+        gl.glVertex3f(-0.5f,-1.5f,1);
+        gl.glVertex3f(-0.5f,1.5f,1);
+        gl.glVertex3f(-0.5f,1.5f,-1);
+        gl.glEnd();
+
+
+
+    }
 
 }
